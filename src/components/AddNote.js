@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 
-import { API_URL } from "../API/API";
+import { saveNote } from "../clients/clients";
 import "./AddNote.scss";
 
 export default class AddNote extends React.Component {
@@ -11,13 +10,15 @@ export default class AddNote extends React.Component {
     this.setState({ note: event.target.value });
   };
 
-  handleAddButton = async () => {
+  handleAddButton = () => {
     //Prevent saving empty string
-    if (this.state.note !== "") {
-      await axios.post(API_URL, { content: this.state.note });
-      window.location.reload(false);
+    if (!this.state.note !== "") {
+      const note = { content: this.state.note };
+      saveNote(note);
+      this.props.stateEditor();
+
       //Reset input
-      document.querySelector("#content").value = "";
+      this.setState({ note: "" });
     }
   };
 
@@ -29,6 +30,7 @@ export default class AddNote extends React.Component {
             <textarea
               id="content"
               onChange={this.handleInpputChange}
+              value={this.state.note}
             ></textarea>
           </div>
           <div

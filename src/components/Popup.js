@@ -21,8 +21,8 @@ export default class Popup extends React.Component {
       content: this.state.editedContent
     };
     await axios.patch(API_URL + this.props.id, editedNote);
+    this.props.stateEditor();
     this.close();
-    window.location.reload(false);
   };
 
   render() {

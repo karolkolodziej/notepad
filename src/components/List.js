@@ -1,8 +1,10 @@
 import React from "react";
-import axios from "axios";
 import Popup from "./Popup";
 
 import { API_URL } from "../API/API";
+import { getDataFromServer } from "../clients/clients";
+import { deleteNote } from "../clients/clients";
+import AddNote from "./AddNote";
 import "./List.scss";
 
 export default class List extends React.Component {
@@ -10,8 +12,7 @@ export default class List extends React.Component {
 
   //Fetch data from API
   componentDidMount = async () => {
-    const response = await axios.get(API_URL);
-    this.setState({ notes: response.data });
+    await this.setState({ notes: await getDataFromServer() });
   };
 
   //Preformatted text- helper
@@ -19,37 +20,49 @@ export default class List extends React.Component {
     return { __html: text };
   };
 
+  //Rerender list after editing
+  stateEditor = async () => {
+    await this.setState({ notes: await getDataFromServer() });
+  };
+
   renderList() {
-    if (this.state.notes.length !== 0) {
-      return this.state.notes.map(note => {
-        return (
-          <div className=" item" key={note._id}>
-            <div className="content">
-              <div dangerouslySetInnerHTML={this.createMarkup(note.content)} />
-              <Popup content={note.content} id={note._id} />
-              <div
-                className="tiny ui red basic button right floated remove "
-                onClick={() => {
-                  const id = note._id;
-                  axios.delete(API_URL + id);
-                  window.location.reload(false);
-                }}
-              >
-                <i className="icon trash"></i>Delete
+    return this.state.notes.map(note => {
+      return (
+        <div key={note._id} className="List ui  segment">
+          <div className="ui relaxed divided list">
+            <div className=" item" key={note._id}>
+              <div className="content">
+                <div
+                  dangerouslySetInnerHTML={this.createMarkup(note.content)}
+                />
+                <Popup
+                  content={note.content}
+                  id={note._id}
+                  stateEditor={this.stateEditor}
+                />
+                <div
+                  className="tiny ui red basic button right floated remove "
+                  onClick={async () => {
+                    const param = API_URL + note._id;
+                    deleteNote(param);
+                    this.setState({ notes: await getDataFromServer() });
+                  }}
+                >
+                  <i className="icon trash"></i>Delete
+                </div>
               </div>
             </div>
           </div>
-        );
-      });
-    } else {
-      return <div className="content">Add Your note</div>;
-    }
+        </div>
+      );
+    });
   }
 
   render() {
     return (
-      <div className="List ui  segment">
-        <div className="ui relaxed divided list">{this.renderList()}</div>
+      <div>
+        <AddNote stateEditor={this.stateEditor} />
+        {this.renderList()}
       </div>
     );
   }
