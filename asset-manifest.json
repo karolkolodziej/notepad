@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/notepad/static/css/main.f962a385.chunk.css",
-    "main.js": "/notepad/static/js/main.71d65172.chunk.js",
-    "main.js.map": "/notepad/static/js/main.71d65172.chunk.js.map",
+    "main.js": "/notepad/static/js/main.d48322ca.chunk.js",
+    "main.js.map": "/notepad/static/js/main.d48322ca.chunk.js.map",
     "runtime-main.js": "/notepad/static/js/runtime-main.4b496c65.js",
     "runtime-main.js.map": "/notepad/static/js/runtime-main.4b496c65.js.map",
-    "static/js/2.98e2246c.chunk.js": "/notepad/static/js/2.98e2246c.chunk.js",
-    "static/js/2.98e2246c.chunk.js.map": "/notepad/static/js/2.98e2246c.chunk.js.map",
+    "static/js/2.6f2ab23d.chunk.js": "/notepad/static/js/2.6f2ab23d.chunk.js",
+    "static/js/2.6f2ab23d.chunk.js.map": "/notepad/static/js/2.6f2ab23d.chunk.js.map",
     "index.html": "/notepad/index.html",
-    "precache-manifest.93b54b75d7c0170610feccebdf6e87ff.js": "/notepad/precache-manifest.93b54b75d7c0170610feccebdf6e87ff.js",
+    "precache-manifest.8b35250fedc3293371d5e176cf368d19.js": "/notepad/precache-manifest.8b35250fedc3293371d5e176cf368d19.js",
     "service-worker.js": "/notepad/service-worker.js",
     "static/css/main.f962a385.chunk.css.map": "/notepad/static/css/main.f962a385.chunk.css.map",
-    "static/js/2.98e2246c.chunk.js.LICENSE.txt": "/notepad/static/js/2.98e2246c.chunk.js.LICENSE.txt"
+    "static/js/2.6f2ab23d.chunk.js.LICENSE.txt": "/notepad/static/js/2.6f2ab23d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4b496c65.js",
-    "static/js/2.98e2246c.chunk.js",
+    "static/js/2.6f2ab23d.chunk.js",
     "static/css/main.f962a385.chunk.css",
-    "static/js/main.71d65172.chunk.js"
+    "static/js/main.d48322ca.chunk.js"
   ]
 }
