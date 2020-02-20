@@ -11,7 +11,7 @@ export default class AddNote extends React.Component {
     this.setState({ note: event.target.value });
   };
 
-  handleAddButton = async event => {
+  handleAddButton = async () => {
     //Prevent saving empty string
     if (this.state.note !== "") {
       await axios.post(API_URL, { content: this.state.note });

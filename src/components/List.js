@@ -26,11 +26,7 @@ export default class List extends React.Component {
           <div className=" item" key={note._id}>
             <div className="content">
               <div dangerouslySetInnerHTML={this.createMarkup(note.content)} />
-              <Popup
-                content={note.content}
-                id={note._id}
-                rerender={this.rerender}
-              />
+              <Popup content={note.content} id={note._id} />
               <div
                 className="tiny ui red basic button right floated remove "
                 onClick={() => {
